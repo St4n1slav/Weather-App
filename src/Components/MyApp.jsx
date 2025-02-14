@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Container } from "react-bootstrap";
 import sunny from "../assets/img/sunny.png";
 import cloudy from "../assets/img/cloudy.png";
 import rainy from "../assets/img/rainy.png";
@@ -56,17 +57,6 @@ const MyApp = () => {
 
   const weatherImagesChange = data.weather ? weatherImages[data.weather[0].main] : null;
 
-  /*const backgroundImage = {
-    Clear: "linear-gradiet(to right, #f3b07c, #fcd283",
-    Clouds: "linear-gradiet(to right, #57d6d4, #71eeec",
-    Rain: "linear-gradiet(to right, #5bc8fb, #80eaff",
-    Snow: "linear-gradiet(to right, #aff2ff, #ffffff",
-    Haze: "linear-gradiet(to right, #57d6d4, #71eeec",
-    Mist: "linear-gradiet(to right, #57d6d4, #71eeec",
-  };
-
-  const backgroundImageChange = data.weather ? backgroundImage[data.weather[0].main] : "linear-gradiet(to right, #f3b07c, #fcd283"; */
-
   const currentDate = new Date();
   const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "sat"];
   const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -77,8 +67,8 @@ const MyApp = () => {
   const formattedDate = `${dayOfWeek}, ${dayOfMonth} ${month}`;
 
   return (
-    <div className="container" /*style={{ backgroundImageChange }}*/>
-      <div className="MyApp" /*style={{ backgroundImage: backgroundImage && backgroundImage.replace ? backgroundImage.replace("to right", "to top") : null }}*/>
+    <Container>
+      <div className="MyApp">
         <div className="search">
           <div className="search-top">
             <i className="fa-solid fa-location fa-location-dot"></i>
@@ -116,7 +106,7 @@ const MyApp = () => {
           )}
         </div>
       </div>
-    </div>
+    </Container>
   );
 };
 
