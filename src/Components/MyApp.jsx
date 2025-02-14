@@ -14,7 +14,7 @@ const MyApp = () => {
       const defaultLocation = "Rome";
       const url = `https://api.openweathermap.org/data/2.5/weather?q=${defaultLocation}&units=Metric&appid=${api_key}`;
       const resp = await fetch(url);
-      const defaultData = await resp.json;
+      const defaultData = await resp.json();
       setData(defaultData);
     };
 
