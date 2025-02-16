@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
-import { Container } from "react-bootstrap";
+import { Container, Col, Row } from "react-bootstrap";
 import sunny from "../assets/img/sunny.png";
 import cloudy from "../assets/img/cloudy.png";
 import rainy from "../assets/img/rainy.png";
 import snowy from "../assets/img/snowy.png";
+
+//Mi sono ispirato molto a un progetto simile che avevo trovato su internet
 
 const MyApp = () => {
   const [data, setData] = useState({});
@@ -71,8 +73,14 @@ const MyApp = () => {
       <div className="MyApp">
         <div className="search">
           <div className="search-top">
-            <i className="fa-solid fa-location fa-location-dot"></i>
-            <div className="location">{data.name}</div>
+            <Row className="location">
+              <Col>
+                <i className="fa-solid fa-location fa-location-dot"></i>
+              </Col>
+              <Col>
+                <div>{data.name}</div>
+              </Col>
+            </Row>
           </div>
           <div className="search-bar">
             <input type="text" placeholder="Cera città" value={location} onChange={handleInputChange} onKeyDown={handleKeyDown} />
@@ -82,26 +90,29 @@ const MyApp = () => {
             <div className="not-found">Not Found</div>
           ) : (
             <>
+              <img className="image" src={weatherImagesChange} alt="sunny" />
               <div className="weather">
-                <img src={weatherImagesChange} alt="sunny" />
                 <div className="weather-type">{data.weather ? data.weather[0].main : null}</div>
                 <div className="temp">{data.main ? `${Math.floor(data.main.temp)}°` : null}</div>
                 <div className="weather-date">
                   <p>{formattedDate}</p>
                 </div>
-                <div className="weather-data">
-                  <div className="humidity">
-                    <div className="data-name">Humidity</div>
-                    <i className="fa-solid fa-droplet"></i>
-                    <div className="data">{data.main ? data.main.humidity : null}%</div>
-                    <div className="Wind">
-                      <div className="data-name">Wind</div>
-                      <i className="fa-solid fa-wind"></i>
-                      <div className="data">{data.wind ? data.wind.speed : null} km/h</div>
-                    </div>
-                  </div>
-                </div>
               </div>
+              <Row className="weather-data">
+                <Col className="card">
+                  <div className="humidity"></div>
+                  <div className="data-name">Humidity</div>
+                  <i className="fa-solid fa-droplet"></i>
+                  <div className="data">{data.main ? data.main.humidity : null}%</div>
+                </Col>
+                <Col className="card">
+                  <div className="Wind">
+                    <div className="data-name">Wind</div>
+                    <i className="fa-solid fa-wind"></i>
+                    <div className="data">{data.wind ? data.wind.speed : null} km/h</div>
+                  </div>
+                </Col>
+              </Row>
             </>
           )}
         </div>
